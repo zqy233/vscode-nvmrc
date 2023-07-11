@@ -1,6 +1,6 @@
-# vscode-nvmrc-terminal
+# vscode-nvmrc
 
-`vscode-nvmrc-terminal` 是一个 Visual Studio Code 插件，它允许你在 Visual Studio Code 窗口聚焦时自动调用 `nvm use` 命令来切换 Node.js 版本。这对于在多个 Visual Studio Code 实例中切换不同的 Node.js 版本时非常方便。
+`vscode-nvmrc` 是一个 Visual Studio Code 插件，它允许你在 Visual Studio Code 窗口聚焦时自动调用 `nvm use` 命令来切换 Node.js 版本。这对于在多个 Visual Studio Code 实例中切换不同的 Node.js 版本时非常方便。
 
 ## 功能
 
@@ -24,8 +24,8 @@
 
 如果你发现任何问题或有任何建议，请随时提出问题或提交请求，我们将非常乐意听取你的反馈和贡献。
 
-- 提交问题：[插件仓库的 Issues 页面](https://github.com/zqy233/vscode-nvmrc-terminal/issues)
-- 提交请求：[插件仓库的 Pull Requests 页面](https://github.com/zqy233/vscode-nvmrc-terminal/pulls)
+- 提交问题：[插件仓库的 Issues 页面](https://github.com/zqy233/vscode-nvmrc/issues)
+- 提交请求：[插件仓库的 Pull Requests 页面](https://github.com/zqy233/vscode-nvmrc/pulls)
 
 ## 许可证
 

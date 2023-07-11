@@ -1,6 +1,6 @@
-# vscode-nvmrc-terminal [中文](https://github.com/zqy233/vscode-nvmrc-terminal/blob/master/README-CN.md)
+# vscode-nvmrc [中文](https://github.com/zqy233/vscode-nvmrc/blob/master/README-CN.md)
 
-`vscode-nvmrc-terminal` is a Visual Studio Code extension that allows you to automatically switch Node.js versions by invoking the `nvm use` command when a Visual Studio Code window is focused. This is useful when you need to switch between different Node.js versions across multiple Visual Studio Code instances.
+`vscode-nvmrc` is a Visual Studio Code extension that allows you to automatically switch Node.js versions by invoking the `nvm use` command when a Visual Studio Code window is focused. This is useful when you need to switch between different Node.js versions across multiple Visual Studio Code instances.
 
 ## Features
 
@@ -24,8 +24,8 @@
 
 If you encounter any issues or have any suggestions, please feel free to raise an issue or submit a pull request. We are more than happy to listen to your feedback and contributions.
 
-- Submit an Issue: [Issues page in the extension's repository](https://github.com/zqy233/vscode-nvmrc-terminal/issues)
-- Submit a Pull Request: [Pull Requests page in the extension's repository](https://github.com/zqy233/vscode-nvmrc-terminal/pulls)
+- Submit an Issue: [Issues page in the extension's repository](https://github.com/zqy233/vscode-nvmrc/issues)
+- Submit a Pull Request: [Pull Requests page in the extension's repository](https://github.com/zqy233/vscode-nvmrc/pulls)
 
 ## License
 
