@@ -1,4 +1,4 @@
-# vscode-nvmrc [中文](https://github.com/zqy233/vscode-nvmrc/blob/master/README-CN.md)
+# vscode-nvmrc [中文](https://github.com/zqy233/vscode-nvmrc/blob/main/README-CN.md)
 
 `vscode-nvmrc` is a Visual Studio Code extension that allows you to automatically switch Node.js versions by invoking the `nvm use` command when a Visual Studio Code window is focused. This is useful when you need to switch between different Node.js versions across multiple Visual Studio Code instances.
 
