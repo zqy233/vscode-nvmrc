@@ -56,7 +56,7 @@ function execute(cmd: string) {
 function nvmuse(url: string, context: vscode.ExtensionContext) {
   readFile(url, { encoding: "utf8" }, (err, data) => {
     if (err) {
-      customStatusBar(".nvmrc file not found.");
+      customStatusBar(".nvmrc file not found.", Status.error);
       return;
     }
     const nvmrcData = context.globalState.get(".nvmrc");
