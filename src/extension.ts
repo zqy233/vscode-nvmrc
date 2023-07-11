@@ -53,12 +53,17 @@ function execute(cmd: string) {
   });
 }
 
+let version: string | undefined;
 function nvmuse(url: string) {
   readFile(url, { encoding: "utf8" }, (err, data) => {
     if (err) {
       customStatusBar(".nvmrc file not found.");
       return;
     }
+    if (version === data) {
+      return;
+    }
+    version = data;
     execute("nvm use " + data);
   });
 }
