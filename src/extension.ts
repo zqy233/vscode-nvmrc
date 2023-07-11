@@ -53,37 +53,37 @@ function execute(cmd: string) {
   });
 }
 
-let version: string | undefined;
-function nvmuse(url: string) {
+function nvmuse(url: string, context: vscode.ExtensionContext) {
   readFile(url, { encoding: "utf8" }, (err, data) => {
     if (err) {
       customStatusBar(".nvmrc file not found.");
       return;
     }
-    if (version === data) {
+    const nvmrcData = context.globalState.get(".nvmrc");
+    if (nvmrcData === data) {
       return;
     }
-    version = data;
+    context.globalState.update(".nvmrc", data);
     execute("nvm use " + data);
   });
 }
 
-function resolveRootPathAndNvmuse() {
+function resolveRootPathAndNvmuse(context: vscode.ExtensionContext) {
   const workspaceFolders = vscode.workspace.workspaceFolders;
   if (workspaceFolders && workspaceFolders.length > 0) {
     const rootPath = workspaceFolders[0].uri.fsPath;
     if (rootPath) {
       const url = resolve(rootPath, ".nvmrc");
-      nvmuse(url);
+      nvmuse(url, context);
     }
   }
 }
 
 export function activate(context: vscode.ExtensionContext) {
-  resolveRootPathAndNvmuse();
+  resolveRootPathAndNvmuse(context);
   const disposable = vscode.window.onDidChangeWindowState((e) => {
     if (e.focused) {
-      resolveRootPathAndNvmuse();
+      resolveRootPathAndNvmuse(context);
     }
   });
   context.subscriptions.push(disposable);

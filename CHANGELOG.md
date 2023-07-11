@@ -1,4 +1,4 @@
-#### 0.1.4
+#### 0.1.4 ~ 0.1.7
 
 Skip 'nvm use' when the version remains unchanged
 
