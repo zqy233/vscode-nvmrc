@@ -42,10 +42,10 @@ function customStatusBar(text: string, type?: Status, time = 4000) {
 function execute(cmd: string) {
   exec(cmd, (error, stdout, stderr) => {
     if (error) {
-      customStatusBar(`${error}`);
+      customStatusBar(`${error}`, Status.error);
     } else {
       if (stderr) {
-        customStatusBar(stderr);
+        customStatusBar(stderr, Status.error);
       } else {
         customStatusBar(stdout);
       }
