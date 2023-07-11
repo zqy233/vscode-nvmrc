@@ -29,7 +29,7 @@ function customStatusBar(text: string, type?: Status, time = 4000) {
       "statusBarItem.warningBackground"
     );
   }
-  statusBar.text = "vscode-nvmrc-terminal: " + text;
+  statusBar.text = "vscode-nvmrc: " + text;
   statusBar.show();
   timeout = setTimeout(() => {
     if (statusBar) {
@@ -63,17 +63,22 @@ function nvmuse(url: string) {
   });
 }
 
+function resolveRootPathAndNvmuse() {
+  const workspaceFolders = vscode.workspace.workspaceFolders;
+  if (workspaceFolders && workspaceFolders.length > 0) {
+    const rootPath = workspaceFolders[0].uri.fsPath;
+    if (rootPath) {
+      const url = resolve(rootPath, ".nvmrc");
+      nvmuse(url);
+    }
+  }
+}
+
 export function activate(context: vscode.ExtensionContext) {
+  resolveRootPathAndNvmuse();
   const disposable = vscode.window.onDidChangeWindowState((e) => {
     if (e.focused) {
-      const workspaceFolders = vscode.workspace.workspaceFolders;
-      if (workspaceFolders && workspaceFolders.length > 0) {
-        const rootPath = workspaceFolders[0].uri.fsPath;
-        if (rootPath) {
-          const url = resolve(rootPath, ".nvmrc");
-          nvmuse(url);
-        }
-      }
+      resolveRootPathAndNvmuse();
     }
   });
   context.subscriptions.push(disposable);
