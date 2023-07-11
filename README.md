@@ -1,43 +1,31 @@
 # vscode-nvmrc-terminal [中文](https://github.com/zqy233/vscode-nvmrc-terminal/blob/master/README-CN.md)
 
-`vscode-nvmrc-terminal` is a Visual Studio Code extension that allows you to automatically switch Node.js versions by invoking the `nvm use` command when opening or switching terminals. It is convenient when working with multiple projects that require different Node.js versions.
+`vscode-nvmrc-terminal` is a Visual Studio Code extension that allows you to automatically switch Node.js versions by invoking the `nvm use` command when a Visual Studio Code window is focused. This is useful when you need to switch between different Node.js versions across multiple Visual Studio Code instances.
 
 ## Features
 
-- Automatically detects the Node.js version to use by reading the `.nvmrc` file in the project's root directory when opening or switching terminals.
-- Supports specifying the Node.js version using full version numbers, major version numbers or version aliases in the `.nvmrc` file.
-
-## Installation
-
-1. Open Visual Studio Code，Click on the Extensions icon in the sidebar (or press `Ctrl+Shift+X`)，Search for `vscode-nvmrc-terminal` and click Install.
-2. Restart Visual Studio Code.
+- Automatically detects and switches Node.js versions based on the `.nvmrc` file in the project root when a Visual Studio Code window is focused.
+- Supports specifying Node.js versions in the `.nvmrc` file using full version numbers, major version numbers, or version aliases.
 
 ## Usage
 
-1. Open a project in Visual Studio Code.
-2. Open the integrated terminal (use the shortcut `Ctrl+`` or click on "View" > "Terminal" > "New Terminal" in the menu bar).
-3. The extension will automatically detect terminal opening or switching and execute the corresponding `nvm use` command to switch the Node.js version.
-4. If a `.nvmrc` file exists in the project's root directory, the extension will read it and switch to the version specified in the file.
-5. If there are multiple projects in the workspace, the extension will use the `.nvmrc` file in the root directory of the first project.
-6. If the `.nvmrc` file does not exist or is invalid, the extension will not perform any action.
-
-Make sure you have Node Version Manager (NVM) installed and properly configured on your system.
-
-## Configuration
-
-The extension does not require any additional configuration. It runs automatically and executes the `nvm use` command based on the `.nvmrc` file in the project's root directory.
+1. When switching between multiple Visual Studio Code instances, the extension will automatically execute the corresponding `nvm use` command to switch the Node.js version.
+2. If a `.nvmrc` file exists in the project root directory, the extension will read the file and switch the Node.js version based on the specified version number.
+3. If there are multiple projects in the workspace, the `.nvmrc` file in the first project's root directory will be used.
+4. If the `.nvmrc` file does not exist or is invalid, the extension will not perform any actions.
+5. The extension does not require any additional configuration.
 
 ## Notes
 
-- The extension relies on a correctly installed and configured NVM environment. Make sure you have NVM properly installed on your system and have the required Node.js versions set up.
-- If you encounter any issues when opening or switching terminals, make sure there is a valid `.nvmrc` file in the project's root directory and the Node.js version is properly configured.
+- Ensure that NVM is correctly installed on your system and configured with the required Node.js versions.
+- Make sure that a valid `.nvmrc` file exists in your project.
 
 ## Feedback and Contributions
 
-If you encounter any issues or have any suggestions, please feel free to raise an issue or submit a pull request. We welcome your feedback and contributions.
+If you encounter any issues or have any suggestions, please feel free to raise an issue or submit a pull request. We are more than happy to listen to your feedback and contributions.
 
-- Submitting issues: [Issues page of the extension repository](https://github.com/zqy233/vscode-nvmrc-terminal/issues)
-- Submitting pull requests: [Pull Requests page of the extension repository](https://github.com/zqy233/vscode-nvmrc-terminal/pulls)
+- Submit an Issue: [Issues page in the extension's repository](https://github.com/zqy233/vscode-nvmrc-terminal/issues)
+- Submit a Pull Request: [Pull Requests page in the extension's repository](https://github.com/zqy233/vscode-nvmrc-terminal/pulls)
 
 ## License
 

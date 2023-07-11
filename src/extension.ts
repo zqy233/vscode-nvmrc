@@ -9,7 +9,7 @@ let timeout: NodeJS.Timeout;
 enum Status {
   error = "error",
 }
-function customStatusBar(text: string, type?: Status, time = 6000) {
+function customStatusBar(text: string, type?: Status, time = 4000) {
   if (statusBar) {
     statusBar.dispose();
   }
@@ -64,16 +64,19 @@ function nvmuse(url: string) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
-  const disposable = vscode.window.onDidChangeActiveTerminal(() => {
-    const workspaceFolders = vscode.workspace.workspaceFolders;
-    if (workspaceFolders && workspaceFolders.length > 0) {
-      const rootPath = workspaceFolders[0].uri.fsPath;
-      if (rootPath) {
-        const url = resolve(rootPath, ".nvmrc");
-        nvmuse(url);
+  const disposable = vscode.window.onDidChangeWindowState((e) => {
+    if (e.focused) {
+      const workspaceFolders = vscode.workspace.workspaceFolders;
+      if (workspaceFolders && workspaceFolders.length > 0) {
+        const rootPath = workspaceFolders[0].uri.fsPath;
+        if (rootPath) {
+          const url = resolve(rootPath, ".nvmrc");
+          nvmuse(url);
+        }
       }
     }
   });
   context.subscriptions.push(disposable);
 }
+
 export function deactivate() {}
