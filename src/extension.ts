@@ -36,7 +36,6 @@ function customStatusBar(text: string, type?: Status, time = 4000) {
       statusBar.dispose();
     }
   }, time);
-  return;
 }
 
 function execute(cmd: string) {
