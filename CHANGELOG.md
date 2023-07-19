@@ -1,15 +1,19 @@
-#### 0.1.4 ~ 0.1.8
+#### 0.0.9
+
+Invoke 'nvm current' to determine the current version
+
+#### 0.0.4 ~ 0.0.8
 
 Skip 'nvm use' when the version remains unchanged
 
-#### 0.1.3
+#### 0.0.3
 
 update README.md
 
-#### 0.1.2
+#### 0.0.2
 
 Migrate to onDidChangeWindowState API
 
-#### 0.1.1
+#### 0.0.1
 
 init

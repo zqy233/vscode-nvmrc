@@ -5,7 +5,11 @@
 ## Features
 
 - Automatically detects and switches Node.js versions based on the `.nvmrc` file in the project root when a Visual Studio Code window is focused.
-- Supports specifying Node.js versions in the `.nvmrc` file using full version numbers, major version numbers, or version aliases.
+- Supports specifying Node.js versions in the `.nvmrc` file using full version numbers or major version numbers. For Example:
+
+  ```
+  v16.16.0
+  ```
 
 ## Usage
 

@@ -41,29 +41,39 @@ function customStatusBar(text: string, type?: Status, time = 4000) {
 function execute(cmd: string) {
   exec(cmd, (error, stdout, stderr) => {
     if (error) {
-      customStatusBar(`${error}`, Status.error);
-    } else {
-      if (stderr) {
-        customStatusBar(stderr, Status.error);
-      } else {
-        customStatusBar(stdout);
-      }
+      return customStatusBar(error.message, Status.error);
     }
+    if (stderr) {
+      return customStatusBar(stderr, Status.error);
+    }
+    customStatusBar(stdout);
   });
 }
 
 function nvmuse(url: string, context: vscode.ExtensionContext) {
   readFile(url, { encoding: "utf8" }, (err, data) => {
     if (err) {
-      customStatusBar(".nvmrc file not found.", Status.error);
-      return;
+      return customStatusBar(".nvmrc file not found.", Status.error);
     }
-    const nvmrcData = context.globalState.get(".nvmrc");
-    if (nvmrcData === data) {
-      return;
-    }
-    context.globalState.update(".nvmrc", data);
-    execute("nvm use " + data);
+    exec("nvm current", (error, stdout, stderr) => {
+      if (error) {
+        return customStatusBar(error.message, Status.error);
+      }
+      if (stderr) {
+        return customStatusBar(stderr, Status.error);
+      }
+      const currentNodeVersion = stdout.trim();
+      const nvmrcData = context.globalState.get(".nvmrc");
+      if (
+        nvmrcData === data &&
+        (currentNodeVersion === data ||
+          currentNodeVersion.replace("v", "") === data)
+      ) {
+        return;
+      }
+      context.globalState.update(".nvmrc", data);
+      execute("nvm use " + data);
+    });
   });
 }
 
