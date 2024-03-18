@@ -11,15 +11,15 @@
   v16.16.0
   ```
 
+- This extension creates a terminal to run nvm use, and it will automatically close the terminal after a few seconds. You can configure whether to automatically close and how many seconds to automatically close in the settings.
+
 ## Usage
 
-1. When switching between multiple Visual Studio Code instances, the extension will automatically execute `nvm use` command.
-2. If the `.nvmrc` file does not exist or is invalid, the extension will not work.
-3. This extension creates a terminal to run nvm use, and it will automatically close the terminal after a few seconds. You can configure whether to automatically close and how many seconds to automatically close in the settings.
+When switching between multiple Visual Studio Code instances, the extension will automatically execute `nvm use` command. 3.
 
 ## Notes
 
-- Make sure that a valid `.nvmrc` file exists in your project root directory.
+- Make sure that a valid `.nvmrc` file exists in your project root directory, if the `.nvmrc` file does not exist or is invalid, the extension will not work.
 - If there are multiple projects in the workspace, the `.nvmrc` file in the first project's root directory will be used.
 - Ensure that NVM is correctly installed on your system and configured with the required Node.js versions.
 
