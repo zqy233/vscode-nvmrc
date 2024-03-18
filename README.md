@@ -1,11 +1,11 @@
-# vscode-nvmrc [中文](https://github.com/zqy233/vscode-nvmrc/blob/main/README-CN.md)
+# [中文](https://github.com/zqy233/vscode-nvmrc/blob/main/README-CN.md) vscode-nvmrc
 
-`vscode-nvmrc` is a Visual Studio Code extension that allows you to automatically switch Node.js versions by invoking the `nvm use` command when a Visual Studio Code window is focused. This is useful when you need to switch between different Node.js versions across multiple Visual Studio Code instances.
+`vscode-nvmrc` is a Visual Studio Code extension that automatically switch Node.js version when a Visual Studio Code window is focused. This is useful when you need to switch between different Node.js versions across multiple Visual Studio Code instances.
 
 ## Features
 
-- Automatically detects and switches Node.js versions based on the `.nvmrc` file in the project root when a Visual Studio Code window is focused.
-- Supports specifying Node.js versions in the `.nvmrc` file using full version numbers or major version numbers. For Example:
+- If a `.nvmrc` file exists in the project root directory, the extension will read the file and switch the Node.js version based on the specified version number when a Visual Studio Code window is focused.
+- For Example:
 
   ```
   v16.16.0
@@ -13,16 +13,15 @@
 
 ## Usage
 
-1. When switching between multiple Visual Studio Code instances, the extension will automatically execute the corresponding `nvm use` command to switch the Node.js version.
-2. If a `.nvmrc` file exists in the project root directory, the extension will read the file and switch the Node.js version based on the specified version number.
-3. If there are multiple projects in the workspace, the `.nvmrc` file in the first project's root directory will be used.
-4. If the `.nvmrc` file does not exist or is invalid, the extension will not perform any actions.
-5. The extension does not require any additional configuration.
+1. When switching between multiple Visual Studio Code instances, the extension will automatically execute `nvm use` command.
+2. If the `.nvmrc` file does not exist or is invalid, the extension will not work.
+3. This extension creates a terminal to run nvm use, and it will automatically close the terminal after a few seconds. You can configure whether to automatically close and how many seconds to automatically close in the settings.
 
 ## Notes
 
+- Make sure that a valid `.nvmrc` file exists in your project root directory.
+- If there are multiple projects in the workspace, the `.nvmrc` file in the first project's root directory will be used.
 - Ensure that NVM is correctly installed on your system and configured with the required Node.js versions.
-- Make sure that a valid `.nvmrc` file exists in your project.
 
 ## Feedback and Contributions
 

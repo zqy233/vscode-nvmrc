@@ -1,29 +1,28 @@
 # vscode-nvmrc
 
-`vscode-nvmrc` 是一个 Visual Studio Code 插件，它允许你在 Visual Studio Code 窗口聚焦时自动调用 `nvm use` 命令来切换 Node.js 版本。这对于在多个 Visual Studio Code 实例中切换不同的 Node.js 版本时非常方便。
+`vscode-nvmrc` 是一个 Visual Studio Code 插件，用于在 Visual Studio Code 窗口聚焦时自动调用 `nvm use` 命令来切换 Node.js 版本。这对于在多个 Visual Studio Code 实例中切换不同的 Node.js 版本时非常方便。
 
 ## 功能
 
-- 通过读取项目根目录中的 `.nvmrc` 文件来确定要使用的 Node.js 版本，在窗口聚焦时自动执行 `nvm use` 命令。
+- 如果项目根目录中存在 `.nvmrc` 文件，插件将读取该文件，并使用文件中指定的版本号切换 Node.js 版本。
 
-- `.nvmrc` 文件可以使用完整版本号、主要版本号来指定 Node.js 版本。例如：
+- 例如：
 
   ```
   v16.16.0
   ```
 
-## 使用方法
+## 用法
 
-1. 多个 Visual Studio Code 实例间切换，插件会自动执行相应的 `nvm use` 命令切换 Node.js 版本。
-2. 如果项目根目录中存在 `.nvmrc` 文件，插件将读取该文件，并使用文件中指定的版本号切换 Node.js 版本。
-3. 工作区存在多个项目，则会使用第一个项目根目录的 `.nvmrc` 文件
-4. 如果 `.nvmrc` 文件不存在或无效，插件将不会执行任何操作。
-5. 插件不需要额外的配置
+1. 多个 Visual Studio Code 实例间切换，插件会自动执行`nvm use` 命令切换 Node.js 版本。
+2. 如果 `.nvmrc` 文件不存在或无效，插件将不会工作。
+3. 插件创建一个终端来运行`nvm use`，并且会在数秒后自动关闭终端，可以在配置项中配置是否自动关闭以及多少秒后自动关闭。
 
 ## 注意事项
 
+- 请确保项目根目录中存在有效的 `.nvmrc` 文件。
+- 工作区存在多个项目，则会使用第一个项目根目录的 `.nvmrc` 文件
 - 请确保你的系统中已经正确安装了 NVM，并配置了所需的 Node.js 版本。
-- 请确保项目中存在有效的 `.nvmrc` 文件。
 
 ## 反馈和贡献
 
