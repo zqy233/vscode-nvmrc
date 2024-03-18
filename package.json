@@ -1,0 +1,74 @@
+{
+  "name": "vscode-nvmrc",
+  "displayName": "vscode-nvmrc",
+  "description": "automatically invoke the `nvm use` command to switch Node.js versions when a Visual Studio Code window is focused",
+  "version": "0.0.9",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "publisher": "zqy233",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zqy233/vscode-nvmrc"
+  },
+  "bugs": "https://github.com/zqy233/vscode-nvmrc/issues",
+  "keywords": [
+    "nvm",
+    "nvmrc",
+    "vscode",
+    "node-version"
+  ],
+  "icon": "images/icon.png",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [],
+    "configuration": {
+      "title": "vscode-nvmrc",
+      "properties": {
+        "vscode-nvmrc.autoCloseNvmTerminal": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically close the terminal after running `nvm use`"
+        },
+        "vscode-nvmrc.delayBeforeCloseNvmTerminal": {
+          "type": "number",
+          "default": 5,
+          "minimum": 1,
+          "description": "Number of seconds to wait before automatically close the terminal after running `nvm use`. Command execution speed may vary and might require adjustment"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4",
+    "ts-loader": "^9.4.2",
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2",
+    "@vscode/test-electron": "^2.3.0"
+  }
+}
