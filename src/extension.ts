@@ -1,9 +1,9 @@
-import * as vscode from "vscode";
+import { ExtensionContext, window, workspace } from "vscode";
 import { readFile } from "fs";
 import { resolve } from "path";
 import { customStatusBar, Status } from "./customStatusBar";
 
-function nvmuse(url: string, context: vscode.ExtensionContext) {
+function nvmuse(url: string, context: ExtensionContext) {
   readFile(url, { encoding: "utf8" }, (err, data) => {
     if (err) {
       return customStatusBar(".nvmrc file not found.", Status.error);
@@ -13,12 +13,10 @@ function nvmuse(url: string, context: vscode.ExtensionContext) {
       return;
     }
     context.globalState.update(".nvmrc", data);
-    const terminal = vscode.window.createTerminal(
-      "run 'nvm use' (vscode-nvmrc)"
-    );
+    const terminal = window.createTerminal("run 'nvm use' (vscode-nvmrc)");
     terminal.sendText("nvm use " + data);
     terminal.show();
-    const config = vscode.workspace.getConfiguration("vscode-nvmrc");
+    const config = workspace.getConfiguration("vscode-nvmrc");
     const autoCloseNvmTerminal = config.get("autoCloseNvmTerminal") as boolean;
     if (autoCloseNvmTerminal) {
       const delayBeforeCloseNvmTerminal = config.get(
@@ -34,8 +32,8 @@ function nvmuse(url: string, context: vscode.ExtensionContext) {
   });
 }
 
-function resolveRootPathAndNvmuse(context: vscode.ExtensionContext) {
-  const workspaceFolders = vscode.workspace.workspaceFolders;
+function resolveRootPathAndNvmuse(context: ExtensionContext) {
+  const workspaceFolders = workspace.workspaceFolders;
   if (workspaceFolders && workspaceFolders.length) {
     const rootPath = workspaceFolders[0].uri.fsPath;
     if (rootPath) {
@@ -45,9 +43,9 @@ function resolveRootPathAndNvmuse(context: vscode.ExtensionContext) {
   }
 }
 
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: ExtensionContext) {
   resolveRootPathAndNvmuse(context);
-  const disposable = vscode.window.onDidChangeWindowState((e) => {
+  const disposable = window.onDidChangeWindowState((e) => {
     if (e.focused) {
       resolveRootPathAndNvmuse(context);
     }

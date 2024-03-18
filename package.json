@@ -2,7 +2,7 @@
   "name": "vscode-nvmrc",
   "displayName": "vscode-nvmrc",
   "description": "automatically invoke the `nvm use` command to switch Node.js versions when a Visual Studio Code window is focused",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "engines": {
     "vscode": "^1.80.0"
   },
