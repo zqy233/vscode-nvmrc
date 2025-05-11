@@ -1,27 +1,44 @@
 # [中文](https://github.com/zqy233/vscode-nvmrc/blob/main/README-CN.md) vscode-nvmrc
 
-`vscode-nvmrc` is a Visual Studio Code extension that automatically switch Node.js version when a Visual Studio Code window is focused. This is useful when you need to switch between different Node.js versions across multiple Visual Studio Code instances.
+`vscode-nvmrc` is a Visual Studio Code extension that automatically switches Node.js version when a Visual Studio Code window is focused. This is useful when you need to switch between different Node.js versions across multiple Visual Studio Code instances.
 
 ## Features
 
 - If a `.nvmrc` file exists in the project root directory, the extension will read the file and switch the Node.js version based on the specified version number when a Visual Studio Code window is focused.
+
 - For Example:
 
   ```
   v16.16.0
   ```
 
-- This extension creates a terminal to run nvm use, and it will automatically close the terminal after a few seconds. You can configure whether to automatically close and how many seconds to automatically close in the settings.
+- The extension will create a terminal to run `nvm use`, and the terminal will automatically close after a few seconds. You can configure whether to auto-close and how many seconds to wait before closing in the settings.
 
-## Usage
+- The extension will record the switched Node.js version. If the version does not change afterwards, `nvm use` will not be run again.
 
-When switching between multiple Visual Studio Code instances, the extension will automatically execute `nvm use` command. 3.
+- If a valid `.nvmrc` file is not found, the default Node.js version specified in the extension settings will be used. If that is also unavailable, no action will be taken.
+
+## Configuration
+
+You can configure the following options in the Visual Studio Code `settings.json` file (or find the extension in the settings to configure):
+
+```json
+{
+  "vscode-nvmrc.defaultNodeVersion": "18.17.1",
+  "vscode-nvmrc.autoCloseNvmTerminal": true,
+  "vscode-nvmrc.delayBeforeCloseNvmTerminal": 5
+}
+```
+
+- **`defaultNodeVersion`**: (Optional) The default Node.js version to use when the `.nvmrc` file is missing.
+- **`autoCloseNvmTerminal`**: Whether to automatically close the terminal after executing the `nvm use` command.
+- **`delayBeforeCloseNvmTerminal`**: Delay time before automatically closing the terminal (in seconds), used to ensure the command finishes executing.
 
 ## Notes
 
-- Make sure that a valid `.nvmrc` file exists in your project root directory, if the `.nvmrc` file does not exist or is invalid, the extension will not work.
-- If there are multiple projects in the workspace, the `.nvmrc` file in the first project's root directory will be used.
-- Ensure that NVM is correctly installed on your system and configured with the required Node.js versions.
+- Please ensure that NVM is correctly installed on your system and that the required Node.js versions are configured.
+- If there are multiple projects in the workspace, the `.nvmrc` file in the root directory of the first project will be used.
+- If you are using Windows 11 and a User Account Control (UAC) prompt appears when the extension executes `nvm use`, it is recommended to set UAC to "Never notify". Otherwise, please disable the auto-close terminal option in the extension settings. This is because the UAC prompt will pause the `nvm use` command, which may cause the command to not finish before the terminal is automatically closed.
 
 ## Feedback and Contributions
 

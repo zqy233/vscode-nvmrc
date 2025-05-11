@@ -2,7 +2,7 @@
   "name": "vscode-nvmrc",
   "displayName": "vscode-nvmrc",
   "description": "automatically invoke the `nvm use` command to switch Node.js versions when a Visual Studio Code window is focused",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -34,13 +34,18 @@
         "vscode-nvmrc.autoCloseNvmTerminal": {
           "type": "boolean",
           "default": true,
-          "description": "Automatically close the terminal after running `nvm use`"
+          "description": "Automatically close the terminal after running `nvm use`."
         },
         "vscode-nvmrc.delayBeforeCloseNvmTerminal": {
           "type": "number",
           "default": 5,
           "minimum": 1,
           "description": "Number of seconds to wait before automatically close the terminal after running `nvm use`. Command execution speed may vary and might require adjustment"
+        },
+        "vscode-nvmrc.defaultNodeVersion": {
+          "type": "string",
+          "default": "",
+          "description": "Default Node.js version to use when no .nvmrc file is found."
         }
       }
     }
